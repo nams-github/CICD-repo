@@ -35,16 +35,7 @@ pipeline {
 
     stage('Nodejs application Deployment'){
         steps{
-            sh ''' cd /home/ubuntu
-            pwd
-            ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.171 << 'EOF'
-            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 998752374893.dkr.ecr.us-east-1.amazonaws.com
-            echo '---------------------------------------- Pre-Deploy-steps-----------------------------------'
-            docker system prune           
-            echo '----------------------------------------- Pre-Deploy-steps-Completed------------------------------------'
-            docker run -d -p 8081:8081 --rm --name application 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2:nodejstag 
-            exit 0
-            EOF'''
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.171 "docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2 && docker pull 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2:nodejstag && (sudo docker ps -f name=node -q | xargs --no-run-if-empty docker container stop) && (docker container ls -a -fname=node -q | xargs -r  docker container rm) &&  docker run -d -p 8081:8081 --rm --name node 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2"' 
         }
     }
     } 
