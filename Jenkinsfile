@@ -37,8 +37,8 @@ pipeline {
         steps{
             sh ''' cd /home/ubuntu
             pwd
-             sshagent(credentials : ['login-agent']) {
-               sh 'ssh  -o StrictHostKeyChecking=no ubuntu@10.100.11.171'
+             sshagent(credentials : ['login-agent']){
+               sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.171'
              }
             echo "success login"
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 998752374893.dkr.ecr.us-east-1.amazonaws.com
