@@ -1,7 +1,7 @@
 @Library('github.com/releaseworks/jenkinslib') _
 
 pipeline {
-    agent { label 'Jenkinsfile' }
+    agent { label 'Jenkinslabel' }
     environment {
         registry = "998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2"
     }
