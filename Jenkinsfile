@@ -37,7 +37,7 @@ pipeline {
         steps{
             sh ''' cd /home/ubuntu
             pwd
-            ssh -tt -i $SSH_KEY_FILE -o StrictHostKeyChecking=no ubuntu@10.100.11.171 << 'EOF'
+            ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.171 << 'EOF'
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 998752374893.dkr.ecr.us-east-1.amazonaws.com
             echo '---------------------------------------- Pre-Deploy-steps-----------------------------------'
             docker system prune           
