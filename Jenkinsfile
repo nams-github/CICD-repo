@@ -37,7 +37,7 @@ pipeline {
     stage('Nodejs application Deployment'){
         steps{
              sshagent(credentials : ['login-server']){
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.206 "pwd && docker system prune"'
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.206 "pwd && whoami"'
               
               
             }
