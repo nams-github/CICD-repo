@@ -5,4 +5,4 @@ RUN npm install
 RUN apk update && apk add bash
 COPY . .
 CMD ["node", "server.js"]
-EXPOSE 8082
+EXPOSE 8083
