@@ -44,6 +44,8 @@ pipeline {
               sh 'docker system prune'        
               sh 'docker images'
               sh 'docker ps'
+              sh 'echo deployment starts'
+              sh 'docker run -d -p 8081:8081 --rm --name application 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2:nodejstag '
             }
             echo "login success"
         }
