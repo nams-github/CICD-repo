@@ -17,8 +17,7 @@ pipeline {
     stage('Docker Image Building') {
       steps{
         script {  
-                sh 'cat dockerfile'
-                sh 'docker rmi $(sudo docker images -q)'
+                sh 'cat dockerfile'               
                 sh 'docker build . -t nodejs:v1'           
         }
       }
