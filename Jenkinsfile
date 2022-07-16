@@ -38,13 +38,10 @@ pipeline {
             sh ''' cd /home/ubuntu
             pwd
              sshagent(credentials : ['login-server']){
-              sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.171 "sudo docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2 && sudo docker pull 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2:nodejstag && (sudo docker ps -f name=node -q | xargs --no-run-if-empty sudo docker container stop) && (sudo docker container ls -a -fname=node -q | xargs -r sudo docker container rm) && sudo docker run -d -p 8081:8081 --rm --name node 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2"' 
+              sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.206 "sudo docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2 && sudo docker pull 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2:nodejstag && (sudo docker ps -f name=node -q | xargs --no-run-if-empty sudo docker container stop) && (sudo docker container ls -a -fname=node -q | xargs -r sudo docker container rm) && sudo docker run -d -p 8081:8081 --rm --name node 998752374893.dkr.ecr.us-east-1.amazonaws.com/namita-ecr-assign2"' 
             }
         }
-        }
     }
-    }
+    
+    
 }
-
-
-            
