@@ -39,7 +39,12 @@ pipeline {
               sh 'ssh -o StrictHostKeyChecking=no ubuntu@10.100.11.206'
               sh  'cd /home/ubuntu'
               sh  'pwd' 
-                 
+              sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 998752374893.dkr.ecr.us-east-1.amazonaws.com'
+              sh 'echo '---------------------------------------- Pre-deployment status-----------------------------------''  
+              sh 'docker rm -f $(sudo docker ps -qa)'
+              sh 'docker rmi -f $(sudo docker images -q)'
+              sh 'docker images'
+              sh 'docker ps'
             }
             echo "login success"
         }
