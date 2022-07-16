@@ -1,7 +1,0 @@
-[app]
-10.100.11.206 ansible_ssh_user=ubuntu ansible_ssh_private_key_file="/home/ubuntu/June12.pem"
-[jenkins]
-10.100.11.152  ansible_ssh_user=ubuntu ansible_ssh_private_key_file="/home/ubuntu/June12.pem"
-
-[all:vars]
-ansible_python_interpreter=/usr/bin/python3
